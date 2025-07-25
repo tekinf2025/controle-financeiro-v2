@@ -1,0 +1,324 @@
+﻿id;data_vencimento;descricao;observacao;categoria;tipo;valor;status
+1;2025-05-06;Loja;Suporte SiCNET;Loja;Saida;120.00;Fechado
+2;2025-07-17;Mercado;Mercado Bolo Giulia;Mercado;Saida;180.00;Fechado
+3;2025-01-02;Mercado;Supermarket;Mercado;Saida;660.00;Fechado
+4;2025-02-05;Vendas;Entrada de vendas LOJA;Vendas;Receita;17005.00;Fechado
+5;2025-05-17;Casa;Tinta casa cabo frio;Casa;Saida;264.00;Fechado
+6;2025-02-19;Estoque;Compra de 1 SSD 1TB Gondenfir;Estoque;Saida;339.00;Fechado
+7;2025-03-13;Mercado;null;Mercado;Saida;202.00;Fechado
+8;2025-04-28;Carro;Seguro Tokio Marine 01/12;Carro;Saida;183.00;Fechado
+9;2025-03-28;Casa;Ampla Saracuruna Na do cliente: 5448347;Casa;Saida;82.00;Fechado
+10;2025-03-17;Loja;Site Nota Fiscal;Loja;Saida;30.00;Fechado
+11;2025-03-10;Casa;Cabo Frio agua- Condominio- internet- iPTU- Capa Piscina;Casa;Saida;204.00;Fechado
+12;2025-06-02;Casa;Mesada Sofia e Giulia;Casa;Saida;250.00;Fechado
+13;2025-07-01;Servidor;Compra de 100 Creditos cPlayer;Servidor;Saida;800.00;Fechado
+14;2025-05-05;Vendas;Entrada de vendas LOJA;Vendas;Receita;16327.00;Fechado
+15;2025-07-04;Pessoal;Lanche em Familia no avestruz;Pessoal;Saida;97.00;Fechado
+16;2025-04-24;Carro;Combustivel;Carro;Saida;100.00;Fechado
+17;2025-03-01;Pet;Banho e Tosa Chave Pix: 21994080732 Tayna Rafaelly;Pet;Saida;150.00;Fechado
+18;2025-03-22;Mercado;null;Mercado;Saida;93.00;Fechado
+19;2025-07-10;Pessoal;Vivo Ricardo;null;Saida;55.00;Fechado
+20;2025-07-28;Pessoal;null;null;Saida;59.00;Fechado
+21;2025-06-18;Casa;Ampla Cabo Frio Na do cliente: 6688872;Casa;Saida;74.00;Fechado
+22;2025-07-09;Pessoal;FarmÃƒÂ¡cia;Pessoal;Saida;122.00;Fechado
+23;2025-05-05;Loja;Contadora PiX CPF: 75814285753 350-00 + 150 iRPF e iRPJ;Loja;Saida;500.00;Fechado
+24;2025-05-05;Servidor;NTDown User: tekin.formatica@hotmail.com User: tekinf Senha: nSob3KWGL;Servidor;Saida;10.00;Fechado
+25;2025-03-06;Casa;internet;Casa;Saida;105.00;Fechado
+26;2025-05-08;Casa;Ampla Cabo Frio Na do cliente: 6688872;Casa;Saida;95.00;Fechado
+27;2025-03-28;Pet;Banho e tosa;Pet;Saida;150.00;Fechado
+28;2025-01-11;Pessoal;Vivo Ricardo;Pessoal;Saida;55.00;Fechado
+29;2025-04-28;Pessoal;Celular Samsung 01/06;Pessoal;Saida;132.00;Fechado
+30;2025-04-04;Servidor;Compra de creditos 130 +5 P2 Server;Servidor;Saida;1430.00;Fechado
+31;2025-01-13;Carro;iPVA 2025 - 01/03;Carro;Saida;941.00;Fechado
+32;2025-06-28;Servidor;Contabo Mensalidade Servidor RTv;Servidor;Saida;126.00;Fechado
+33;2025-04-28;Servidor;Contabo Mensalidade Servidor RTv;Servidor;Saida;126.00;Fechado
+34;2025-06-10;Casa;Escola Giulia https://meu.olaisaac.io/home User: 09858394730 Senha: lili0708;Casa;Saida;439.00;Fechado
+35;2025-07-05;Vendas;Entrada de vendas LOJA;Vendas;Receita;9825.00;Aberto
+36;2025-02-01;Estoque;Compra de 1un de monitor 21'5;Estoque;Saida;395.00;Fechado
+37;2024-12-16;Servidor;Compra de 100 creditos cPlayer;Servidor;Saida;800.00;Fechado
+38;2025-03-20;Estoque;Compra 5 pen-drive 64gb- 4 cooler rgb;Estoque;Saida;260.00;Fechado
+39;2025-06-01;Estoque;2 placa 1155 + 2 i5-3570 + 2 Cooler + 4 SSD 240GB + 1 NVME 1 TB + 3 Gab + 6 Fonte 230w;Estoque;Saida;1842.00;Fechado
+40;2025-07-28;Casa;Mensalidade Netflix;Casa;Saida;21.00;Fechado
+41;2025-03-08;Casa;Escola Giulia https://meu.olaisaac.io/home User: 09858394730 Senha: lili0708;Casa;Saida;439.00;Fechado
+42;2025-03-14;Pessoal;Cartao Carrefour Fatura veio ZERADA;Pessoal;Saida;0.00;Fechado
+43;2025-05-06;Estoque;Compra 6 ssd 120gb + 6 ssd 240gb;Estoque;Saida;1024.00;Fechado
+44;2025-06-19;Casa;Gas;Casa;Saida;105.00;Fechado
+45;2025-05-04;Casa;Churrasco;Casa;Saida;114.00;Fechado
+46;2025-02-20;Loja;imposto Simples;Loja;Saida;114.00;Fechado
+47;2025-06-28;Estoque;Compra de 20 mouse usb 940 cada 20 mouse pad 671 cada 10 teclado usb 2890 cada ;Estoque;Saida;611.00;Fechado
+48;2025-06-28;Carro;Combustivel;Carro;Saida;100.00;Fechado
+49;2025-01-06;Casa;internet;Casa;Saida;105.00;Fechado
+50;2025-01-28;Pessoal;Cartao Nubank;Pessoal;Saida;9.00;Fechado
+51;2025-04-28;Estoque;Compra de 3 tv box;Estoque;Saida;354.00;Fechado
+52;2025-04-22;Casa;Reparo casa cabo frio + gas + agua;Casa;Saida;284.00;Fechado
+53;2025-04-10;Casa;Escola Giulia https://meu.olaisaac.io/home User: 09858394730 Senha: lili0708;Casa;Saida;439.00;Fechado
+54;2025-06-28;Mercado;null;Mercado;Saida;494.00;Fechado
+55;2025-03-30;Pessoal;Almoco;Pessoal;Saida;70.00;Fechado
+56;2025-01-02;Casa;Casa Cabo Frio Massa corrida e outros;Casa;Saida;115.00;Fechado
+57;2025-05-28;Pessoal;Compra Akkermansia Muciniphila Bio Mamps 50mg 30 Capsulas;Pessoal;Saida;119.00;Fechado
+58;2025-02-20;Casa;Claro Sofia;Casa;Saida;53.00;Fechado
+59;2025-03-20;Estoque;Compra 2 kit i5-8400- 32gb- 2tb nome- 3 fonte- 2 gab gamer;Estoque;Saida;3306.00;Fechado
+60;2025-07-20;Casa;Claro Sofia;Casa;Saida;53.00;Fechado
+61;2025-07-01;Estoque;ReposiÃƒÂ§ÃƒÂ£o de Estoque - Sigma Cascadura;Estoque;Saida;2844.00;Fechado
+62;2025-02-25;Servidor;Compra de 100 creditos cPlayer;Servidor;Saida;800.00;Fechado
+63;2025-03-20;Loja;inss Ricardo;Loja;Saida;350.00;Fechado
+64;2024-12-14;Casa;Casa Cabo Frio Guarda Roupa;Casa;Saida;2269.00;Fechado
+65;2025-04-10;Pessoal;Tim Ricardo Fatura veio ZERADA;Pessoal;Saida;0.00;Fechado
+66;2025-03-24;Estoque;Compra 10 ssd Lexar;Estoque;Saida;1097.00;Fechado
+67;2025-05-20;Loja;imposto Simples;Loja;Saida;107.00;Fechado
+68;2025-06-26;Mercado;null;Mercado;Saida;381.28;Fechado
+69;2025-02-20;Loja;inss Ricardo;Loja;Saida;350.00;Fechado
+70;2025-06-28;Estoque;Compra de 10 caixas de som usb 2290 cada;Estoque;Saida;229.00;Fechado
+71;2025-01-20;Loja;imposto Simples;Loja;Saida;123.00;Fechado
+72;2025-02-06;Loja;internet;Loja;Saida;105.00;Fechado
+73;2025-03-28;Mercado;null;Mercado;Saida;216.00;Fechado
+74;2025-06-05;Pet;Racao;Pet;Saida;85.00;Fechado
+75;2025-04-28;Estoque;Compra 3 Gabinete Office;Estoque;Saida;315.00;Fechado
+76;2025-07-10;Casa;Cabo Frio agua- Condominio- internet- iPTU- Capa Piscina;Casa;Saida;204.00;Fechado
+77;2025-04-20;Loja;inss Ricardo;Loja;Saida;350.00;Fechado
+78;2025-01-26;Mercado;null;Mercado;Saida;525.00;Fechado
+79;2025-06-28;Casa;Mensalidade Netflix;Casa;Saida;21.00;Fechado
+80;2025-02-18;Casa;Ampla Cabo Frio Na do cliente: 6688872;Casa;Saida;208.00;Fechado
+81;2025-06-06;Mercado;null;Mercado;Saida;192.00;Fechado
+82;2025-07-16;Loja;Site Nota Fiscal;Loja;Saida;20.00;Fechado
+83;2025-07-28;Loja;null;Loja;Saida;30.00;Fechado
+84;2025-03-23;Mercado;Mercado e Feira;Mercado;Saida;580.00;Fechado
+85;2024-12-23;Mercado;Churrasco;Mercado;Saida;143.00;Fechado
+86;2025-02-12;Mercado;null;Mercado;Saida;190.00;Fechado
+87;2025-07-18;Casa;Ampla Cabo Frio Na do cliente: 6688872;Casa;Saida;75.00;Fechado
+88;2025-06-20;Pet;Banho e Tosa Chave Pix: 21994080732 Tayna Rafaelly;Pet;Saida;150.00;Fechado
+89;2025-06-28;Mercado;null;Mercado;Saida;391.00;Fechado
+90;2025-03-16;Pessoal;Almoco em famiÃƒÂ­lia;Pessoal;Saida;152.00;Fechado
+91;2025-06-19;Mercado;null;Mercado;Saida;251.00;Fechado
+92;2025-05-28;Mercado;null;Mercado;Saida;304.00;Fechado
+93;2025-03-21;Carro;GRT Residuo 2022. 2023 e 2024;Carro;Saida;241.00;Fechado
+94;2025-05-28;Mercado;null;Mercado;Saida;334.00;Fechado
+95;2025-04-05;Vendas;Entrada de vendas LOJA;Vendas;Receita;16151.00;Fechado
+96;2025-03-28;Carro;Seguro Tokio Marine 12/12;Carro;Saida;209.00;Fechado
+97;2025-04-14;Pessoal;Cartao Carrefour Fatura veio ZERADA;Pessoal;Saida;0.00;Fechado
+98;2025-05-14;Pessoal;Cartao Carrefour Fatura veio ZERADA;Pessoal;Saida;0.00;Fechado
+99;2025-07-28;Loja;4 unidades de Limpa Contato;Loja;Saida;80.00;Fechado
+100;2025-02-17;Estoque;Compra de Placa mae 1151;Estoque;Saida;345.00;Fechado
+101;2025-06-22;Pessoal;Lanche ;Pessoal;Saida;140.00;Fechado
+102;2025-01-16;Loja;Site Nota Fiscal;Loja;Saida;30.00;Fechado
+103;2025-03-07;Carro;Combustivel;Carro;Saida;100.00;Fechado
+104;2025-06-20;Loja;imposto Simples;Loja;Saida;113.00;Fechado
+105;2025-05-20;Casa;Claro Sofia;Casa;Saida;53.00;Fechado
+106;2025-02-01;Pessoal;Mesada Sofia e Giulia;Pessoal;Saida;200.00;Fechado
+107;2025-04-28;Estoque;Compra 3 Fonte Real 500w;Estoque;Saida;402.00;Fechado
+108;2025-02-01;Mercado;null;Mercado;Saida;534.00;Fechado
+109;2025-02-09;Pessoal;Almoco em famiÃƒÂ­lia + Mae;Pessoal;Saida;172.00;Fechado
+110;2025-03-17;Servidor;240 creditos P2x;Servidor;Saida;1200.00;Fechado
+111;2025-04-13;Carro;Combustivel;Carro;Saida;100.00;Fechado
+112;2025-01-05;Vendas;Entrada de vendas LOJA;Vendas;Receita;11140.00;Fechado
+113;2024-12-18;Servidor;Compra de 200 creditos P2x;Servidor;Saida;1090.00;Fechado
+114;2025-03-28;Mercado;Supermarket Carnaval;Mercado;Saida;764.00;Fechado
+115;2025-06-20;Servidor;Compra de 200 creditos P2x R$ 500 cada;Servidor;Saida;1000.00;Fechado
+116;2025-01-07;Mercado;Supermarket;Mercado;Saida;365.00;Fechado
+117;2024-12-05;Vendas;Entrada de vendas LOJA;Vendas;Receita;12075.00;Fechado
+118;2025-01-14;Pessoal;Cartao Carrefour;Pessoal;Saida;6.00;Fechado
+119;2025-02-14;Mercado;null;Mercado;Saida;222.00;Fechado
+120;2025-06-10;Loja;Certificado Digital;Loja;Saida;210.00;Fechado
+121;2025-01-20;Loja;inss Ricardo;Loja;Saida;311.00;Fechado
+122;2025-02-17;Loja;Taxa de incendio;Loja;Saida;85.00;Fechado
+123;2025-02-20;Estoque;Compra de 3 Fonte 500w real;Estoque;Saida;392.00;Fechado
+124;2025-07-01;Casa;Ampla Saracuruna Na do cliente: 5448347;Casa;Saida;206.00;Fechado
+125;2025-07-18;Loja;inss Ricardo;Loja;Saida;334.00;Fechado
+126;2025-04-01;Casa;Ampla Saracuruna Na do cliente: 5448347;Casa;Saida;278.00;Fechado
+127;2025-02-05;Loja;Contadora PiX CPF: 75814285753;Loja;Saida;350.00;Fechado
+128;2025-02-28;Casa;Ampla Saracuruna Na do cliente: 5448347;Casa;Saida;285.00;Fechado
+129;2025-06-05;Servidor;NTDown User: tekin.formatica@hotmail.com User: tekinf Senha: nSob3KWGL;Servidor;Saida;10.00;Fechado
+130;2025-03-13;Estoque;Compra 5 Filtro de Linha;Estoque;Saida;112.00;Fechado
+131;2025-02-17;Estoque;Compra de i5-5800;Estoque;Saida;454.00;Fechado
+132;2025-05-28;Mercado;null;Mercado;Saida;247.00;Fechado
+133;2025-03-01;Casa;Mesada Sofia e Giulia;Casa;Saida;250.00;Fechado
+134;2025-04-10;Casa;Cabo Frio agua- Condominio- internet- iPTU- Capa Piscina;Casa;Saida;179.00;Fechado
+135;2025-03-27;Carro;iPVA 2025 3.3;Carro;Saida;941.00;Fechado
+136;2025-06-10;Pessoal;Vivo Ricardo;Pessoal;Saida;59.00;Fechado
+137;2025-04-08;Mercado;null;Mercado;Saida;303.00;Fechado
+138;2025-07-21;Pessoal;Unha Giulia, Unha Sofia, Shopping, Jantar;Pessoal;Saida;430.00;Fechado
+139;2025-07-04;Carro;CombustÃƒÂ­vel ;Carro;Saida;100.00;Fechado
+140;2025-05-28;Mercado;Cabo frio;Mercado;Saida;533.00;Fechado
+141;2025-03-07;Mercado;null;Mercado;Saida;252.00;Fechado
+142;2025-05-10;Pessoal;Vivo Ricardo;Pessoal;Saida;59.00;Fechado
+143;2025-05-23;Pet;Banho e Tosa Chave Pix: 21994080732 Tayna Rafaelly;Pet;Saida;150.00;Fechado
+144;2025-07-14;Pessoal;Cartao Carrefour Fatura veio ZERADA;Pessoal;Saida;0.00;Fechado
+145;2025-06-28;Pessoal;Akkermansia Muciniphila Bio Mamps 50mg 30 Capsulas C/selo;Pessoal;Saida;112.00;Fechado
+146;2025-02-14;Pessoal;Cartao Carrefour;Pessoal;Saida;6.00;Fechado
+147;2025-01-20;Pet;Banho e Tosa;Pet;Saida;150.00;Fechado
+148;2025-03-28;Carro;Combustivel;Carro;Saida;100.00;Fechado
+149;2024-12-19;Carro;Combustivel;Carro;Saida;150.00;Fechado
+150;2025-03-29;Mercado;null;Mercado;Saida;409.00;Fechado
+151;2025-07-06;Casa;Caxias On-Line;Casa;Saida;105.00;Fechado
+152;2025-05-28;Carro;Combustivel;Carro;Saida;100.00;Fechado
+153;2025-05-08;Servidor;Compra de 200 creditos P2X;Servidor;Saida;1200.00;Fechado
+154;2025-05-28;Casa;Amoedo material de construcao;Casa;Saida;138.00;Fechado
+155;2025-05-28;Estoque;Compra 2 Memoria 8GB DDR4 Notebook;Estoque;Saida;207.00;Fechado
+156;2025-05-15;Carro;Combustivel;Carro;Saida;100.00;Fechado
+157;2025-05-23;Mercado;null;Mercado;Saida;264.00;Fechado
+158;2025-01-09;Casa;Claro Sofia;Casa;Saida;50.00;Fechado
+159;2025-02-12;Pet;Racao cachorro- passaro e simparique;Pet;Saida;175.00;Fechado
+160;2025-05-19;Carro;Combustivel;Carro;Saida;100.00;Fechado
+161;2025-02-05;Servidor;NTDown User: tekin.formatica@hotmail.com User: tekinf Senha: nSob3KWGL;Servidor;Saida;10.00;Fechado
+162;2025-07-05;Loja;Contadora PiX CPF: 75814285753;Loja;Saida;350.00;Fechado
+163;2025-04-28;Casa;Mensalidade Netflix;Casa;Saida;21.00;Fechado
+164;2025-06-05;Loja;Contadora PiX CPF: 75814285753;Loja;Saida;350.00;Fechado
+165;2025-03-13;Carro;Multa de transito;Carro;Saida;78.00;Fechado
+166;2025-05-30;Mercado;null;Mercado;Saida;44.00;Fechado
+167;2025-05-02;Casa;Mesada Sofia e Giulia;Casa;Saida;250.00;Fechado
+168;2025-03-18;Carro;Combustivel;Carro;Saida;100.00;Fechado
+169;2025-01-17;Carro;Combustivel + loja de roupa objetiva + Lanche;Carro;Saida;385.00;Fechado
+170;2025-05-14;Servidor;Compra 130 creditos + 5 de bonus;Servidor;Saida;1430.00;Fechado
+171;2025-01-10;Pessoal;Tim Ricardo;Pessoal;Saida;45.00;Fechado
+172;2025-05-10;Pessoal;Tim Ricardo Fatura veio ZERADA;Pessoal;Saida;36.00;Fechado
+173;2025-02-17;Estoque;Compra de 10 cabos hdmi;Estoque;Saida;102.00;Fechado
+174;2025-07-28;Pessoal;Akkermansia Muciniphila Bio Mamps 50mg 60 Capsulas C/selo;Pessoal;Saida;187.00;Fechado
+175;2025-01-15;Pessoal;Almoco em famiÃƒÂ­lia + Sorveteria;Pessoal;Saida;250.00;Fechado
+176;2025-03-28;Carro;Combustivel;Carro;Saida;100.00;Fechado
+177;2025-06-13;Casa;Tinta para piso;Casa;Saida;84.00;Fechado
+178;2025-07-10;Pessoal;Tim Ricardo;Pessoal;Saida;36.00;Fechado
+179;2025-02-02;Casa;Ampla Saracuruna Na do cliente: 5448347;Casa;Saida;82.00;Fechado
+180;2025-01-05;Loja;Contadora PiX CPF: 75814285753;Loja;Saida;332.00;Fechado
+181;2025-02-24;Carro;iPVA 2025 2.3;Carro;Saida;941.00;Fechado
+182;2025-04-20;Casa;Claro Sofia;Casa;Saida;53.00;Fechado
+183;2025-05-28;Casa;Mensalidade Netflix;Casa;Saida;21.00;Fechado
+184;2025-05-28;Estoque;Compra de 7 carregadores e Bico de pressao;Estoque;Saida;368.00;Fechado
+185;2025-06-02;Casa;Ampla Saracuruna Na do cliente: 5448347;Casa;Saida;193.00;Fechado
+186;2025-01-02;Casa;Ampla Saracuruna Na do cliente: 5448347;Casa;Saida;260.00;Fechado
+187;2025-02-12;Carro;Combustivel;Carro;Saida;100.00;Fechado
+188;2025-03-28;Servidor;Contabo Mensalidade Servidor RTv;Servidor;Saida;126.00;Fechado
+189;2025-03-05;Vendas;Entrada de vendas LOJA;Vendas;Receita;20405.00;Fechado
+190;2025-05-10;Casa;Escola Giulia https://meu.olaisaac.io/home User: 09858394730 Senha: lili0708;Casa;Saida;439.00;Fechado
+191;2025-06-16;Carro;Combustivel ;Carro;Saida;100.00;Fechado
+192;2025-06-04;Casa;Sofia ENEM;Casa;Saida;85.00;Fechado
+193;2025-03-10;Pessoal;Tim Ricardo Fatura veio ZERADA;Pessoal;Saida;0.00;Fechado
+194;2024-12-22;Carro;Combustivel;Carro;Saida;100.00;Fechado
+195;2025-03-05;Loja;Contadora PiX CPF: 75814285753;Loja;Saida;350.00;Fechado
+196;2025-06-28;Carro;Combustivel ;Carro;Saida;100.00;Fechado
+197;2025-06-28;Estoque;Tela notebook samsung;Estoque;Saida;284.00;Fechado
+198;2025-03-30;Carro;Combustivel;Carro;Saida;100.00;Fechado
+199;2025-03-28;Casa;Ampla Cabo Frio Na do cliente: 6688872 -;Casa;Saida;112.00;Fechado
+200;2025-04-15;Mercado;null;Mercado;Saida;220.00;Fechado
+201;2025-07-28;Carro ;CombustÃƒÂ­vel ;Carro;Saida;100.00;Fechado
+202;2025-02-17;Estoque;Compra de 3 SSD 240GB;Estoque;Saida;411.00;Fechado
+203;2025-04-26;Mercado;null;Mercado;Saida;604.00;Fechado
+204;2025-04-25;Pet;Banho e Tosa Chave Pix: 21994080732 Tayna Rafaelly;Pet;Saida;150.00;Fechado
+205;2025-02-28;Servidor;Contabo Mensalidade Servidor RTv;Servidor;Saida;126.00;Fechado
+206;2025-05-02;Casa;Ampla Saracuruna Na do cliente: 5448347;Casa;Saida;258.00;Fechado
+207;2025-03-12;Estoque;Compra 3 SSD 240GB + 3 MEM 8GB DDR4 + 2 PROC i5-3470;Estoque;Saida;820.00;Fechado
+208;2024-12-19;Mercado;Farmacia- mercado;Mercado;Saida;85.00;Fechado
+209;2025-07-28;Estoque;Compra Tela Notebook Lenovo;Estoque;Saida;282.00;Fechado
+210;2025-03-13;Casa;Gas;Casa;Saida;105.00;Fechado
+211;2025-06-11;Carro;Multa com 40% de desconto;Carro;Saida;78.00;Fechado
+212;2025-07-07;Servidor;Compra de 130 + 5 Creditos P2 Server;Servidor;Saida;1430.00;Fechado
+213;2025-07-28;Mercado;null;Mercado;Saida;337.00;Fechado
+214;2025-02-17;Estoque;Compra de 3 estabilizador;Estoque;Saida;210.00;Fechado
+215;2025-01-17;Casa;Ampla Cabo Frio Na do cliente: 6688872;Casa;Saida;281.00;Fechado
+216;2025-06-10;Pessoal;Tim Ricardo;Pessoal;Saida;36.00;Fechado
+217;2025-04-01;Casa;Mesada Sofia e Giulia;Casa;Saida;250.00;Fechado
+218;2025-06-08;Carro;Lavagem carro + Feira;Carro;Saida;97.00;Fechado
+219;2025-04-22;Loja;imposto Simples;Loja;Saida;201.00;Fechado
+220;2025-07-02;Casa;Mesada Sofia e Giulia;Casa;Saida;250.00;Fechado
+221;2025-01-08;Casa;Escola Giulia https://meu.olaisaac.io/home User: 09858394730 Senha: lili0708;Casa;Saida;549.00;Fechado
+222;2025-01-12;Casa;Casa Cabo Frio Condominio- agua- internet Cabo Frio;Casa;Saida;158.00;Fechado
+223;2025-02-02;Carro;Combustivel;Carro;Saida;100.00;Fechado
+224;2025-02-01;Pet;Banho e Tosa;Pet;Saida;150.00;Fechado
+225;2025-07-05;Servidor;NTDown User: tekin.formatica@hotmail.com User: tekinf Senha: nSob3KWGL;Servidor;Saida;10.00;Fechado
+226;2025-01-07;Servidor;Compra de 65 credito P2 Server;Servidor;Saida;700.00;Fechado
+227;2025-02-10;Pessoal;Tim Ricardo;Pessoal;Saida;36.00;Fechado
+228;2025-04-11;Mercado;null;Mercado;Saida;110.00;Fechado
+229;2025-05-15;Loja;Site Nota Fiscal;Loja;Saida;30.00;Fechado
+230;2024-12-10;Pessoal;Tim Ricardo Vai pra justica cobranca de multa abusiva;Pessoal;Saida;45.00;Fechado
+231;2024-12-28;Pessoal;Cartao Nubank;Pessoal;Saida;966.00;Fechado
+232;2025-04-05;Servidor;NTDown User: tekin.formatica@hotmail.com User: tekinf Senha: nSob3KWGL;Servidor;Saida;10.00;Fechado
+233;2025-06-20;Casa;Claro Sofia;Casa;Saida;53.00;Fechado
+234;2025-06-28;Loja;Escrivaninha Loja;Loja;Saida;160.00;Fechado
+235;2025-03-28;Carro;Troca de oleo completa;Carro;Saida;371.00;Fechado
+236;2024-12-10;Pessoal;Tim Ricardo - cobranca de multa abusiva;Pessoal;Saida;45.00;Fechado
+237;2025-02-08;Estoque;Compra de 1 No-break 600va;Estoque;Saida;308.00;Fechado
+238;2025-06-10;Casa;Cabo Frio agua- Condominio- internet- iPTU- Capa Piscina;Casa;Saida;204.00;Fechado
+239;2025-04-05;Loja;Contadora PiX CPF: 75814285753;Loja;Saida;350.00;Fechado
+240;2025-05-28;Servidor;Contabo Mensalidade Servidor RTv;Servidor;Saida;126.00;Fechado
+241;2025-03-24;Carro;Combustivel;Carro;Saida;100.00;Fechado
+242;2025-02-14;Pessoal;Almoco com meu Amor;Pessoal;Saida;93.00;Fechado
+243;2025-03-05;Servidor;NTDown User: tekin.formatica@hotmail.com User: tekinf Senha: nSob3KWGL;Servidor;Saida;10.00;Fechado
+244;2025-04-28;Pessoal;Compra Akkermansia Muciniphila Bio Mamps 50mg 30 Capsulas;Pessoal;Saida;119.00;Fechado
+245;2025-06-16;Loja;Site Nota Fiscal;Loja;Saida;30.00;Fechado
+246;2024-12-25;Carro;Manutencao veiÃƒÂ­culo da empresa;Carro;Saida;350.00;Fechado
+247;2025-07-28;Mercado;Mercado Rio Sul;Mercado;Saida;470.00;Fechado
+248;2025-04-10;Pessoal;Vivo Ricardo;Pessoal;Saida;59.00;Fechado
+249;2025-05-13;Carro;Alinhamento- Balanceamento- pastilhas de freio;Carro;Saida;300.00;Fechado
+250;2025-07-28;Carro;Seguro Tokio Marine 04/12;Carro;Saida;183.00;Fechado
+251;2025-05-28;Carro;Seguro Tokio Marine 02/12;Carro;Saida;183.00;Fechado
+252;2025-03-28;Casa;Mensalidade Netflix;Casa;Saida;21.00;Fechado
+253;2025-04-19;Mercado;null;Mercado;Saida;486.00;Fechado
+254;2025-02-28;Casa;Mensalidade Netflix;Casa;Saida;21.00;Fechado
+255;2025-04-15;Loja;Site Nota Fiscal;Loja;Saida;30.00;Fechado
+256;2025-03-20;Casa;Claro Sofia;Casa;Saida;53.00;Fechado
+257;2025-01-11;Mercado;Mercadinho e Saque;Mercado;Saida;255.00;Fechado
+258;2025-02-08;Casa;Escola Giulia https://meu.olaisaac.io/home User: 09858394730 Senha: lili0708;Casa;Saida;439.00;Fechado
+259;2025-02-17;Pessoal;Compra de Sunga de praia;Pessoal;Saida;64.00;Fechado
+260;2025-02-28;Carro;Seguro do Onix 2020 11/12;Carro;Saida;209.00;Fechado
+261;2025-05-06;Casa;internet Caxias On-Line;Casa;Saida;105.00;Fechado
+262;2024-12-18;Casa;Casa Cabo Frio Condominio- agua- internet;Casa;Saida;158.00;Fechado
+263;2025-03-10;Pessoal;Vivo Ricardo;Pessoal;Saida;55.00;Fechado
+264;2025-02-11;Pessoal;Vivo Ricardo;Pessoal;Saida;55.00;Fechado
+265;2025-03-14;Pet;Racao + Weekend;Pet;Saida;125.00;Fechado
+266;2025-02-19;Loja;iPTU LOJA;Loja;Saida;302.00;Fechado
+267;2025-04-17;Casa;Ampla Cabo Frio Na do cliente: 6688872;Casa;Saida;69.00;Fechado
+268;2025-02-03;Servidor;Compra de 200 creditos P2x;Servidor;Saida;1200.00;Fechado
+269;2025-02-17;Loja;Site Nota Fiscal;Loja;Saida;30.00;Fechado
+270;2025-04-04;Mercado;null;Mercado;Saida;153.00;Fechado
+271;2025-05-09;Casa;Caio Burgues;Casa;Saida;180.00;Fechado
+272;2025-02-13;Carro;GRT 2025;Carro;Saida;281.00;Fechado
+273;2025-06-06;Casa;Caxias On-Line;Casa;Saida;105.00;Fechado
+274;2025-06-05;Vendas;Entrada de vendas LOJA;Vendas;Receita;17074.00;Fechado
+275;2025-02-08;Estoque;Compra de 2 MXQ-PRO;Estoque;Saida;245.00;Fechado
+276;2025-07-28;CombustÃƒÂ­vel;null;Carro;Saida;132.00;Fechado
+277;2025-07-13;Pet;RaÃƒÂ§ÃƒÂ£o  e feira;Pet;Saida;150.00;Fechado
+278;2025-04-15;Servidor;Compra 100 Creditos cPlayer;Servidor;Saida;800.00;Fechado
+279;2025-03-28;Mercado;Supermarket;Mercado;Saida;530.00;Fechado
+280;2025-05-16;Mercado;Raposo cabo frio;Mercado;Saida;47.00;Fechado
+281;2025-06-28;Carro;Seguro Tokio Marine 03/12;Carro;Saida;183.00;Fechado
+282;2025-06-14;Pessoal;Cartao Carrefour Fatura veio ZERADA;Pessoal;Saida;0.00;Fechado
+283;2025-07-20;Loja;imposto Simples;Loja;Saida;233.00;Fechado
+284;2025-07-28;Mercado;Mercado;Mercado;Saida;461.00;Fechado
+285;2025-07-10;Casa;Escola Giulia https://meu.olaisaac.io/home User: 09858394730 Senha: lili0708;Casa;Saida;439.00;Fechado
+286;2025-01-05;Servidor;Servidor NTDown User: tekin.formatica@hotmail.com User: tekinf Senha: nSob3KWGL;Servidor;Saida;10.00;Fechado
+287;2025-04-06;Casa;internet;Casa;Saida;105.00;Fechado
+288;2025-05-10;Casa;Cabo Frio agua- Condominio- internet;Casa;Saida;204.00;Fechado
+289;2025-02-18;Casa;Cabo Frio agua- Condominio- internet- iPTU- Capa Piscina;Casa;Saida;767.00;Fechado
+290;2025-01-20;Mercado;Acougue + Pizza;Mercado;Saida;123.00;Fechado
+291;2025-07-18;Pet;Banho e Tosa Chave Pix: 21994080732 Tayna Rafaelly;Pet;Saida;150.00;Fechado
+292;2025-06-20;Loja;inss Ricardo;Loja;Saida;334.00;Fechado
+293;2025-04-28;Estoque;Compra 5 carregador;Estoque;Saida;190.00;Fechado
+294;2025-06-28;Mercado;null;Mercado;Saida;280.00;Fechado
+295;2025-02-08;Servidor;Compra de 130+5 creditos P2 Server;Servidor;Saida;1430.00;Fechado
+296;2025-05-20;Loja;inss Ricardo;Loja;Saida;350.00;Fechado
+297;2025-03-20;Loja;imposto Simples;Loja;Saida;101.00;Fechado
+298;2025-07-23;Pessoal;Lanche em familia;Pessoal;Saida;50.00;Fechado
+299;2025-07-23;Pessoal;Roupa;Pessoal;Saida;384.00;Fechado
+300;2025-07-23;Pessoal;Copos, pratos e outros;Pessoal;Saida;102.00;Fechado
+302;2025-07-24;Pessoal;Lanche em familia;Pessoal;Saida;162.00;Fechado
+303;2025-07-24;Carro;CombustÃ­vel ;Carro;Saida;100.00;Fechado
+305;2025-08-28;Pessoal;Akkermansia Muciniphila Bio Mamps 50mg 60 Capsulas C/selo;Pessoal;Saida;0.00;Aberto
+306;2025-08-28;Carro;Seguro Tokio Marine 05/12;Carro;Saida;183.00;Aberto
+307;2025-08-28;Casa;Mensalidade Netflix;Casa;Saida;21.00;Aberto
+308;2025-08-20;Loja;imposto Simples;Loja;Saida;233.00;Aberto
+309;2025-08-20;Casa;Claro Sofia;Casa;Saida;53.00;Aberto
+310;2025-08-18;Casa;Ampla Cabo Frio Na do cliente: 6688872;Casa;Saida;75.00;Aberto
+311;2025-08-18;Pet;Banho e Tosa Chave Pix: 21994080732 Tayna Rafaelly;Pet;Saida;150.00;Aberto
+312;2025-08-18;Loja;inss Ricardo;Loja;Saida;334.00;Aberto
+313;2025-08-16;Loja;Site Nota Fiscal;Loja;Saida;20.00;Aberto
+314;2025-08-14;Pessoal;Cartao Carrefour Fatura veio ZERADA;Pessoal;Saida;0.00;Aberto
+315;2025-08-13;Pet;Racao  e feira;Pet;Saida;150.00;Aberto
+316;2025-08-10;Casa;Escola Giulia https://meu.olaisaac.io/home User: 09858394730 Senha: lili0708;Casa;Saida;439.00;Aberto
+317;2025-08-10;Casa;Cabo Frio agua- Condominio- internet- iPTU- Capa Piscina;Casa;Saida;204.00;Aberto
+318;2025-08-10;Pessoal;Tim Ricardo;Pessoal;Saida;36.00;Aberto
+319;2025-08-10;Pessoal;Vivo Ricardo;null;Saida;55.00;Aberto
+320;2025-08-06;Casa;Caxias On-Line;Casa;Saida;105.00;Aberto
+321;2025-08-05;Loja;Contadora PiX CPF: 75814285753;Loja;Saida;350.00;Aberto
+322;2025-08-05;Servidor;NTDown User: tekin.formatica@hotmail.com User: tekinf Senha: nSob3KWGL;Servidor;Saida;10.00;Aberto
+323;2025-08-05;Vendas;Entrada de vendas LOJA;Vendas;Receita;0.00;Aberto
+324;2025-08-02;Casa;Mesada Sofia e Giulia;Casa;Saida;250.00;Aberto
+325;2025-08-01;Casa;Ampla Saracuruna Na do cliente: 5448347;Casa;Saida;206.00;Aberto
