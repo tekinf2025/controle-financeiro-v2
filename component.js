@@ -1,0 +1,606 @@
+// <stdin>
+import React, { useState, useEffect } from "https://esm.sh/react@18.2.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js?deps=react@18.2.0,react-dom@18.2.0";
+var supabaseUrl = "https://ivumtyhdkjurerknjnpt.supabase.co";
+var supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2dW10eWhka2p1cmVya25qbnB0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzNjUyMjMsImV4cCI6MjA2NTk0MTIyM30.rbkqMbSYczGbJdGSjUvARGLIU3Gf-B9q0RWm0vW99Bs";
+var supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    persistSession: false,
+    autoRefreshToken: false
+  }
+});
+console.log("\u{1F527} Supabase URL:", supabaseUrl);
+console.log("\u{1F527} Cliente Supabase inicializado:", !!supabase);
+var FinancialControlApp = () => {
+  const [lancamentos, setLancamentos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [connectionStatus, setConnectionStatus] = useState("connecting");
+  const [showModal, setShowModal] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+  const getFirstDayOfCurrentMonth = () => {
+    const now = /* @__PURE__ */ new Date();
+    const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+    return firstDay.toISOString().split("T")[0];
+  };
+  const [filters, setFilters] = useState({
+    categoria: "",
+    tipo: "",
+    status: "",
+    dataInicio: getFirstDayOfCurrentMonth(),
+    dataFim: "",
+    busca: ""
+  });
+  const getCurrentDate = () => {
+    const today = /* @__PURE__ */ new Date();
+    return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  };
+  const [newLancamento, setNewLancamento] = useState({
+    descricao: "",
+    observacao: "",
+    categoria: "",
+    tipo: "Saida",
+    valor: "",
+    status: "Aberto",
+    data_vencimento: getCurrentDate()
+  });
+  const categorias = [
+    "Loja",
+    "Mercado",
+    "Vendas",
+    "Casa",
+    "Estoque",
+    "Pessoal",
+    "Servidor",
+    "Carro",
+    "Pet",
+    "Outros"
+  ];
+  const testConnection = async () => {
+    try {
+      console.log("\u{1F517} Testando conex\xE3o com Supabase...");
+      const { data, error: error2 } = await supabase.from("financeiro_lancamentos").select("count", { count: "exact", head: true });
+      if (error2) {
+        throw error2;
+      }
+      console.log("\u2705 Conex\xE3o estabelecida com sucesso");
+      setConnectionStatus("connected");
+      return true;
+    } catch (error2) {
+      console.error("\u274C Erro de conex\xE3o:", error2);
+      setConnectionStatus("error");
+      setError(`Erro de conex\xE3o: ${error2.message}`);
+      return false;
+    }
+  };
+  const fetchLancamentos = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      console.log("\u{1F4E5} Carregando lan\xE7amentos...");
+      console.log("\u{1F50D} Filtros aplicados:", filters);
+      let query = supabase.from("financeiro_lancamentos").select("*").order("data_vencimento", { ascending: false });
+      if (filters.categoria) {
+        query = query.eq("categoria", filters.categoria);
+        console.log("\u{1F3F7}\uFE0F Filtro categoria:", filters.categoria);
+      }
+      if (filters.tipo) {
+        query = query.eq("tipo", filters.tipo);
+        console.log("\u{1F4CA} Filtro tipo:", filters.tipo);
+      }
+      if (filters.status) {
+        query = query.eq("status", filters.status);
+        console.log("\u{1F4CB} Filtro status:", filters.status);
+      }
+      if (filters.dataInicio) {
+        query = query.gte("data_vencimento", filters.dataInicio);
+        console.log("\u{1F4C5} Filtro data in\xEDcio:", filters.dataInicio);
+      }
+      if (filters.dataFim) {
+        query = query.lte("data_vencimento", filters.dataFim);
+        console.log("\u{1F4C5} Filtro data fim:", filters.dataFim);
+      }
+      if (filters.busca) {
+        query = query.or(`descricao.ilike.%${filters.busca}%,observacao.ilike.%${filters.busca}%`);
+        console.log("\u{1F50D} Filtro busca:", filters.busca);
+      }
+      const { data, error: error2 } = await query;
+      if (error2) {
+        throw error2;
+      }
+      console.log("\u{1F4CA} Dados carregados do Supabase:", data);
+      console.log("\u{1F4C8} Quantidade de registros:", data ? data.length : 0);
+      if (data && data.length > 0) {
+        console.log("\u{1F50D} Primeiro registro:", data[0]);
+        console.log("\u{1F3D7}\uFE0F Campos dispon\xEDveis:", Object.keys(data[0]));
+        data.slice(0, 3).forEach((item, index) => {
+          console.log(`\u{1F4DD} Registro ${index + 1}:`, {
+            id: item.id,
+            descricao: item.descricao,
+            tipo: item.tipo,
+            valor: item.valor,
+            valorType: typeof item.valor
+          });
+        });
+      }
+      setLancamentos(data || []);
+      setConnectionStatus("connected");
+    } catch (error2) {
+      console.error("\u274C Erro ao carregar lan\xE7amentos:", error2);
+      setError(`Erro ao carregar dados: ${error2.message}`);
+      setConnectionStatus("error");
+      setLancamentos([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    const initializeApp = async () => {
+      console.log("\u{1F680} Inicializando aplica\xE7\xE3o...");
+      const isConnected = await testConnection();
+      if (isConnected) {
+        await fetchLancamentos();
+      }
+    };
+    initializeApp();
+  }, []);
+  useEffect(() => {
+    if (connectionStatus === "connected") {
+      console.log("\u{1F504} Filtros mudaram, recarregando dados...");
+      fetchLancamentos();
+    }
+  }, [filters]);
+  const resumoFinanceiro = React.useMemo(() => {
+    console.log("\u{1F4B0} Calculando resumo financeiro...");
+    console.log("\u{1F4CA} Total de lan\xE7amentos para calcular:", lancamentos.length);
+    if (lancamentos.length === 0) {
+      console.log("\u26A0\uFE0F Nenhum lan\xE7amento para calcular");
+      return { receitas: 0, despesas: 0, saldo: 0 };
+    }
+    const tiposUnicos = [...new Set(lancamentos.map((l) => l.tipo))];
+    console.log("\u{1F3F7}\uFE0F Tipos encontrados nos dados:", tiposUnicos);
+    const receitas_list = lancamentos.filter((l) => {
+      const isReceita = l.tipo === "Receita";
+      if (isReceita) {
+        console.log("\u{1F49A} Receita encontrada:", {
+          descricao: l.descricao,
+          valor: l.valor,
+          valorType: typeof l.valor,
+          valorParsed: parseFloat(l.valor)
+        });
+      }
+      return isReceita;
+    });
+    const receitas = receitas_list.reduce((sum, l) => {
+      let valor = 0;
+      if (typeof l.valor === "number") {
+        valor = l.valor;
+      } else if (typeof l.valor === "string") {
+        const cleanValue = l.valor.replace(/[^\d.,-]/g, "").replace(",", ".");
+        valor = parseFloat(cleanValue) || 0;
+      }
+      console.log("\u2795 Somando receita:", {
+        original: l.valor,
+        converted: valor,
+        description: l.descricao
+      });
+      return sum + valor;
+    }, 0);
+    const saidas = lancamentos.filter((l) => {
+      const isSaida = l.tipo === "Saida";
+      if (isSaida) {
+        console.log("\u{1F534} Saida encontrada:", {
+          descricao: l.descricao,
+          valor: l.valor,
+          valorType: typeof l.valor,
+          valorParsed: parseFloat(l.valor)
+        });
+      }
+      return isSaida;
+    });
+    const despesas = saidas.reduce((sum, l) => {
+      let valor = 0;
+      if (typeof l.valor === "number") {
+        valor = l.valor;
+      } else if (typeof l.valor === "string") {
+        const cleanValue = l.valor.replace(/[^\d.,-]/g, "").replace(",", ".");
+        valor = parseFloat(cleanValue) || 0;
+      }
+      console.log("\u2796 Somando despesa:", {
+        original: l.valor,
+        converted: valor,
+        description: l.descricao
+      });
+      return sum + valor;
+    }, 0);
+    const saldo = receitas - despesas;
+    console.log("\u2705 Resumo calculado:", {
+      receitas,
+      despesas,
+      saldo,
+      totalReceitas: receitas_list.length,
+      totalSaidas: saidas.length
+    });
+    return {
+      receitas,
+      despesas,
+      saldo
+    };
+  }, [lancamentos]);
+  const generateUUID = () => {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == "x" ? r : r & 3 | 8;
+      return v.toString(16);
+    });
+  };
+  const saveLancamento = async () => {
+    try {
+      setError(null);
+      let data;
+      let result;
+      if (editingItem) {
+        data = {
+          descricao: newLancamento.descricao,
+          observacao: newLancamento.observacao,
+          categoria: newLancamento.categoria,
+          tipo: newLancamento.tipo,
+          valor: parseFloat(newLancamento.valor) || 0,
+          status: newLancamento.status,
+          data_vencimento: newLancamento.data_vencimento
+        };
+        console.log("\u{1F4BE} Atualizando lan\xE7amento:", data);
+        result = await supabase.from("financeiro_lancamentos").update(data).eq("id", editingItem.id);
+      } else {
+        data = {
+          id: generateUUID(),
+          descricao: newLancamento.descricao,
+          observacao: newLancamento.observacao,
+          categoria: newLancamento.categoria,
+          tipo: newLancamento.tipo,
+          valor: parseFloat(newLancamento.valor) || 0,
+          status: newLancamento.status,
+          data_vencimento: newLancamento.data_vencimento,
+          created_at: (/* @__PURE__ */ new Date()).toISOString(),
+          updated_at: (/* @__PURE__ */ new Date()).toISOString()
+        };
+        console.log("\u{1F4BE} Inserindo novo lan\xE7amento:", data);
+        result = await supabase.from("financeiro_lancamentos").insert([data]);
+      }
+      if (result.error) {
+        throw result.error;
+      }
+      console.log("\u2705 Lan\xE7amento salvo com sucesso");
+      setShowModal(false);
+      setEditingItem(null);
+      setNewLancamento({
+        descricao: "",
+        observacao: "",
+        categoria: "",
+        tipo: "Saida",
+        valor: "",
+        status: "Aberto",
+        data_vencimento: getCurrentDate()
+      });
+      await fetchLancamentos();
+    } catch (error2) {
+      console.error("\u274C Erro ao salvar:", error2);
+      setError(`Erro ao salvar: ${error2.message}`);
+    }
+  };
+  const deleteLancamento = async (id) => {
+    if (confirm("Deseja realmente excluir este lan\xE7amento?")) {
+      try {
+        setError(null);
+        console.log("\u{1F5D1}\uFE0F Deletando lan\xE7amento:", id);
+        const { error: error2 } = await supabase.from("financeiro_lancamentos").delete().eq("id", id);
+        if (error2) {
+          throw error2;
+        }
+        console.log("\u2705 Lan\xE7amento deletado com sucesso");
+        await fetchLancamentos();
+      } catch (error2) {
+        console.error("\u274C Erro ao deletar:", error2);
+        setError(`Erro ao deletar: ${error2.message}`);
+      }
+    }
+  };
+  const duplicateLancamento = (item) => {
+    setEditingItem(null);
+    const today = /* @__PURE__ */ new Date();
+    const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+    setNewLancamento({
+      descricao: item.descricao + " (C\xF3pia)",
+      observacao: item.observacao,
+      categoria: item.categoria,
+      tipo: item.tipo,
+      valor: item.valor,
+      status: "Aberto",
+      data_vencimento: todayString
+    });
+    setShowModal(true);
+  };
+  const editLancamento = (item) => {
+    setEditingItem(item);
+    setNewLancamento({
+      descricao: item.descricao,
+      observacao: item.observacao || "",
+      categoria: item.categoria,
+      tipo: item.tipo,
+      valor: item.valor.toString(),
+      status: item.status,
+      data_vencimento: item.data_vencimento
+      // Manter formato original YYYY-MM-DD
+    });
+    setShowModal(true);
+  };
+  const fecharLancamento = async (id) => {
+    try {
+      setLoading(true);
+      const { error: error2 } = await supabase.from("financeiro_lancamentos").update({ status: "Fechado" }).eq("id", id);
+      if (error2) throw error2;
+      console.log("\u2705 Lan\xE7amento fechado com sucesso");
+      await fetchLancamentos();
+    } catch (error2) {
+      console.error("\u274C Erro ao fechar lan\xE7amento:", error2);
+      setError(`Erro ao fechar lan\xE7amento: ${error2.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const exportToCSV = () => {
+    const headers = ["data_vencimento", "descricao", "observacao", "categoria", "tipo", "valor", "status"];
+    const csvContent = [
+      headers.join(","),
+      ...lancamentos.map((item) => [
+        item.data_vencimento,
+        `"${item.descricao}"`,
+        `"${item.observacao || ""}"`,
+        item.categoria,
+        item.tipo,
+        item.valor,
+        item.status
+      ].join(","))
+    ].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", `lancamentos_${(/* @__PURE__ */ new Date()).toISOString().split("T")[0]}.csv`);
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    }).format(value);
+  };
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split("-");
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString("pt-BR");
+  };
+  return /* @__PURE__ */ React.createElement("div", { className: "min-h-screen bg-slate-900 text-white p-4" }, /* @__PURE__ */ React.createElement("div", { className: "max-w-7xl mx-auto" }, /* @__PURE__ */ React.createElement("div", { className: "flex flex-col md:flex-row justify-between items-start md:items-center mb-6" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h1", { className: "text-3xl font-bold text-white mb-2" }, "Lan\xE7amentos"), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-3" }, /* @__PURE__ */ React.createElement("p", { className: "text-slate-400" }, "Gerencie suas receitas e despesas"), /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ React.createElement("div", { className: `w-2 h-2 rounded-full ${connectionStatus === "connected" ? "bg-green-400" : connectionStatus === "connecting" ? "bg-yellow-400" : "bg-red-400"}` }), /* @__PURE__ */ React.createElement("span", { className: "text-xs text-slate-400" }, connectionStatus === "connected" ? "Conectado" : connectionStatus === "connecting" ? "Conectando..." : "Erro de conex\xE3o")))), /* @__PURE__ */ React.createElement("div", { className: "flex flex-wrap gap-2 mt-4 md:mt-0" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => setShowModal(true),
+      disabled: connectionStatus !== "connected",
+      className: "bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed px-4 py-2 rounded-lg font-medium transition-colors"
+    },
+    "+ Novo Lan\xE7amento"
+  ), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: exportToCSV,
+      disabled: lancamentos.length === 0,
+      className: "bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed px-4 py-2 rounded-lg font-medium transition-colors"
+    },
+    "Exportar CSV"
+  ))), /* @__PURE__ */ React.createElement("div", { className: "bg-slate-800 rounded-lg p-4 mb-6" }, /* @__PURE__ */ React.createElement("h3", { className: "text-lg font-semibold mb-4 flex items-center" }, /* @__PURE__ */ React.createElement("span", { className: "mr-2" }, "\u{1F50D}"), " Filtros"), /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      type: "text",
+      value: filters.busca,
+      onChange: (e) => setFilters({ ...filters, busca: e.target.value }),
+      className: "w-full bg-slate-700 border border-slate-600 rounded px-4 py-3 text-white placeholder-slate-400",
+      placeholder: "\u{1F50D} Buscar por descri\xE7\xE3o ou observa\xE7\xE3o..."
+    }
+  )), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-4" }, /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      value: filters.categoria,
+      onChange: (e) => setFilters({ ...filters, categoria: e.target.value }),
+      className: "bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white"
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "" }, "Todas Categorias"),
+    categorias.map((categoria) => /* @__PURE__ */ React.createElement("option", { key: categoria, value: categoria }, categoria))
+  ), /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      value: filters.tipo,
+      onChange: (e) => setFilters({ ...filters, tipo: e.target.value }),
+      className: "bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white"
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "" }, "Todos os Tipos"),
+    /* @__PURE__ */ React.createElement("option", { value: "Receita" }, "Receita"),
+    /* @__PURE__ */ React.createElement("option", { value: "Saida" }, "Saida")
+  ), /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      value: filters.status,
+      onChange: (e) => setFilters({ ...filters, status: e.target.value }),
+      className: "bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white"
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "" }, "Todos Status"),
+    /* @__PURE__ */ React.createElement("option", { value: "Aberto" }, "Aberto"),
+    /* @__PURE__ */ React.createElement("option", { value: "Fechado" }, "Fechado")
+  ), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      type: "date",
+      value: filters.dataInicio,
+      onChange: (e) => setFilters({ ...filters, dataInicio: e.target.value }),
+      className: "bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white",
+      placeholder: "Data In\xEDcio"
+    }
+  ), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      type: "date",
+      value: filters.dataFim,
+      onChange: (e) => setFilters({ ...filters, dataFim: e.target.value }),
+      className: "bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white",
+      placeholder: "Data Fim"
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" }, /* @__PURE__ */ React.createElement("div", { className: "bg-slate-800 rounded-lg p-6" }, /* @__PURE__ */ React.createElement("h3", { className: "text-slate-400 text-sm mb-2" }, "Total Receitas (Filtrado)"), /* @__PURE__ */ React.createElement("p", { className: "text-2xl font-bold text-green-400" }, formatCurrency(resumoFinanceiro.receitas)), /* @__PURE__ */ React.createElement("p", { className: "text-xs text-slate-500 mt-1" }, lancamentos.filter((l) => l.tipo === "Receita").length, " receita(s)")), /* @__PURE__ */ React.createElement("div", { className: "bg-slate-800 rounded-lg p-6" }, /* @__PURE__ */ React.createElement("h3", { className: "text-slate-400 text-sm mb-2" }, "Total Sa\xEDdas (Filtrado)"), /* @__PURE__ */ React.createElement("p", { className: "text-2xl font-bold text-red-400" }, formatCurrency(resumoFinanceiro.despesas)), /* @__PURE__ */ React.createElement("p", { className: "text-xs text-slate-500 mt-1" }, lancamentos.filter((l) => l.tipo === "Saida").length, " saida(s)")), /* @__PURE__ */ React.createElement("div", { className: "bg-slate-800 rounded-lg p-6" }, /* @__PURE__ */ React.createElement("h3", { className: "text-slate-400 text-sm mb-2" }, "Saldo (Filtrado)"), /* @__PURE__ */ React.createElement("p", { className: `text-2xl font-bold ${resumoFinanceiro.saldo >= 0 ? "text-green-400" : "text-red-400"}` }, formatCurrency(resumoFinanceiro.saldo)), /* @__PURE__ */ React.createElement("p", { className: "text-xs text-slate-500 mt-1" }, lancamentos.length, " total de lan\xE7amentos"))), /* @__PURE__ */ React.createElement("div", { className: "mb-4" }, error && /* @__PURE__ */ React.createElement("div", { className: "bg-red-900/50 border border-red-700 rounded-lg p-3 mb-4" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-center gap-2" }, /* @__PURE__ */ React.createElement("span", { className: "text-red-400" }, "\u26A0\uFE0F"), /* @__PURE__ */ React.createElement("span", { className: "text-red-300 font-medium" }, "Erro:"), /* @__PURE__ */ React.createElement("span", { className: "text-red-200" }, error), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => {
+        setError(null);
+        fetchLancamentos();
+      },
+      className: "ml-auto bg-red-700 hover:bg-red-600 px-2 py-1 rounded text-xs transition-colors"
+    },
+    "Tentar novamente"
+  ))), /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between" }, /* @__PURE__ */ React.createElement("p", { className: "text-slate-400" }, lancamentos.length, " lan\xE7amento(s) encontrado(s)"), connectionStatus === "connected" && /* @__PURE__ */ React.createElement("div", { className: "flex flex-col text-right" }, /* @__PURE__ */ React.createElement("p", { className: "text-xs text-green-400" }, "\u2705 Dados carregados do Supabase")))), /* @__PURE__ */ React.createElement("div", { className: "bg-slate-800 rounded-lg overflow-hidden" }, loading ? /* @__PURE__ */ React.createElement("div", { className: "p-8 text-center" }, /* @__PURE__ */ React.createElement("div", { className: "animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto" }), /* @__PURE__ */ React.createElement("p", { className: "mt-2 text-slate-400" }, connectionStatus === "connecting" ? "Conectando ao Supabase..." : "Carregando dados...")) : connectionStatus === "error" && !error ? /* @__PURE__ */ React.createElement("div", { className: "p-8 text-center" }, /* @__PURE__ */ React.createElement("div", { className: "text-red-400 text-4xl mb-4" }, "\u26A0\uFE0F"), /* @__PURE__ */ React.createElement("h3", { className: "text-lg font-medium text-red-300 mb-2" }, "Erro de Conex\xE3o"), /* @__PURE__ */ React.createElement("p", { className: "text-slate-400 mb-4" }, "N\xE3o foi poss\xEDvel conectar ao banco de dados"), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => {
+        setConnectionStatus("connecting");
+        testConnection().then((success) => {
+          if (success) fetchLancamentos();
+        });
+      },
+      className: "bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors"
+    },
+    "Tentar Reconectar"
+  )) : /* @__PURE__ */ React.createElement("div", { className: "overflow-x-auto" }, /* @__PURE__ */ React.createElement("table", { className: "w-full" }, /* @__PURE__ */ React.createElement("thead", { className: "bg-slate-700" }, /* @__PURE__ */ React.createElement("tr", null, /* @__PURE__ */ React.createElement("th", { className: "px-4 py-3 text-left text-sm font-medium text-slate-300" }, "Data Vencimento"), /* @__PURE__ */ React.createElement("th", { className: "px-4 py-3 text-left text-sm font-medium text-slate-300" }, "Descri\xE7\xE3o"), /* @__PURE__ */ React.createElement("th", { className: "px-4 py-3 text-left text-sm font-medium text-slate-300" }, "Categoria"), /* @__PURE__ */ React.createElement("th", { className: "px-4 py-3 text-left text-sm font-medium text-slate-300" }, "Tipo"), /* @__PURE__ */ React.createElement("th", { className: "px-4 py-3 text-left text-sm font-medium text-slate-300" }, "Valor"), /* @__PURE__ */ React.createElement("th", { className: "px-4 py-3 text-left text-sm font-medium text-slate-300" }, "Status"), /* @__PURE__ */ React.createElement("th", { className: "px-4 py-3 text-left text-sm font-medium text-slate-300" }, "A\xE7\xF5es"))), /* @__PURE__ */ React.createElement("tbody", { className: "divide-y divide-slate-700" }, lancamentos.map((item) => /* @__PURE__ */ React.createElement("tr", { key: item.id, className: "hover:bg-slate-700" }, /* @__PURE__ */ React.createElement("td", { className: "px-4 py-3 text-sm" }, formatDate(item.data_vencimento)), /* @__PURE__ */ React.createElement("td", { className: "px-4 py-3" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "font-medium" }, item.descricao), item.observacao && /* @__PURE__ */ React.createElement("div", { className: "text-sm text-slate-400" }, item.observacao))), /* @__PURE__ */ React.createElement("td", { className: "px-4 py-3" }, /* @__PURE__ */ React.createElement("span", { className: "bg-slate-600 px-2 py-1 rounded text-sm" }, item.categoria)), /* @__PURE__ */ React.createElement("td", { className: "px-4 py-3" }, /* @__PURE__ */ React.createElement("span", { className: `px-2 py-1 rounded text-sm ${item.tipo === "Receita" ? "bg-green-900 text-green-300" : "bg-red-900 text-red-300"}` }, item.tipo)), /* @__PURE__ */ React.createElement("td", { className: "px-4 py-3 font-medium" }, formatCurrency(item.valor)), /* @__PURE__ */ React.createElement("td", { className: "px-4 py-3" }, /* @__PURE__ */ React.createElement("span", { className: `px-2 py-1 rounded text-sm ${item.status === "Fechado" ? "bg-green-900 text-green-300" : "bg-yellow-900 text-yellow-300"}` }, item.status)), /* @__PURE__ */ React.createElement("td", { className: "px-4 py-3" }, /* @__PURE__ */ React.createElement("div", { className: "flex space-x-2" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => editLancamento(item),
+      className: "text-blue-400 hover:text-blue-300 p-1",
+      title: "Editar"
+    },
+    "\u270F\uFE0F"
+  ), item.status === "Aberto" && /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => fecharLancamento(item.id),
+      className: "text-green-400 hover:text-green-300 p-1",
+      title: "Fechar"
+    },
+    "\u2705"
+  ), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => deleteLancamento(item.id),
+      className: "text-red-400 hover:text-red-300 p-1",
+      title: "Excluir"
+    },
+    "\u{1F5D1}\uFE0F"
+  ))))))), lancamentos.length === 0 && !loading && /* @__PURE__ */ React.createElement("div", { className: "p-8 text-center text-slate-400" }, "Nenhum lan\xE7amento encontrado"))), showModal && /* @__PURE__ */ React.createElement("div", { className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" }, /* @__PURE__ */ React.createElement("div", { className: "bg-slate-800 rounded-lg w-full max-w-md" }, /* @__PURE__ */ React.createElement("div", { className: "p-6" }, /* @__PURE__ */ React.createElement("h2", { className: "text-xl font-bold mb-4" }, editingItem ? "Editar Lan\xE7amento" : "Novo Lan\xE7amento"), /* @__PURE__ */ React.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "block text-sm font-medium mb-1" }, "Data de Vencimento"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      type: "date",
+      value: newLancamento.data_vencimento,
+      onChange: (e) => setNewLancamento({ ...newLancamento, data_vencimento: e.target.value }),
+      className: "w-full bg-slate-700 border border-slate-600 rounded px-3 py-2"
+    }
+  )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "block text-sm font-medium mb-1" }, "Descri\xE7\xE3o"), /* @__PURE__ */ React.createElement("div", { className: "flex gap-2" }, /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      value: newLancamento.descricao,
+      onChange: (e) => setNewLancamento({ ...newLancamento, descricao: e.target.value }),
+      className: "w-1/2 bg-slate-700 border border-slate-600 rounded px-3 py-2 text-white"
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "" }, "Selecione ou digite"),
+    categorias.map((categoria) => /* @__PURE__ */ React.createElement("option", { key: categoria, value: categoria }, categoria))
+  ), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      type: "text",
+      value: newLancamento.descricao,
+      onChange: (e) => setNewLancamento({ ...newLancamento, descricao: e.target.value }),
+      className: "w-1/2 bg-slate-700 border border-slate-600 rounded px-3 py-2",
+      placeholder: "Ou digite a descri\xE7\xE3o"
+    }
+  ))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "block text-sm font-medium mb-1" }, "Observa\xE7\xE3o"), /* @__PURE__ */ React.createElement(
+    "textarea",
+    {
+      value: newLancamento.observacao,
+      onChange: (e) => setNewLancamento({ ...newLancamento, observacao: e.target.value }),
+      className: "w-full bg-slate-700 border border-slate-600 rounded px-3 py-2",
+      rows: "2",
+      placeholder: "Observa\xE7\xF5es adicionais"
+    }
+  )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "block text-sm font-medium mb-1" }, "Categoria"), /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      value: newLancamento.categoria,
+      onChange: (e) => setNewLancamento({ ...newLancamento, categoria: e.target.value }),
+      className: "w-full bg-slate-700 border border-slate-600 rounded px-3 py-2"
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "" }, "Selecione uma categoria"),
+    categorias.map((categoria) => /* @__PURE__ */ React.createElement("option", { key: categoria, value: categoria }, categoria))
+  )), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-4" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "block text-sm font-medium mb-1" }, "Tipo"), /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      value: newLancamento.tipo,
+      onChange: (e) => setNewLancamento({ ...newLancamento, tipo: e.target.value }),
+      className: "w-full bg-slate-700 border border-slate-600 rounded px-3 py-2"
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "Receita" }, "Receita"),
+    /* @__PURE__ */ React.createElement("option", { value: "Saida" }, "Saida")
+  )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "block text-sm font-medium mb-1" }, "Status"), /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      value: newLancamento.status,
+      onChange: (e) => setNewLancamento({ ...newLancamento, status: e.target.value }),
+      className: "w-full bg-slate-700 border border-slate-600 rounded px-3 py-2"
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "Aberto" }, "Aberto"),
+    /* @__PURE__ */ React.createElement("option", { value: "Fechado" }, "Fechado")
+  ))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "block text-sm font-medium mb-1" }, "Valor"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      type: "number",
+      step: "0.01",
+      value: newLancamento.valor,
+      onChange: (e) => setNewLancamento({ ...newLancamento, valor: e.target.value }),
+      className: "w-full bg-slate-700 border border-slate-600 rounded px-3 py-2",
+      placeholder: "0,00"
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "flex justify-end space-x-2 mt-6" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => {
+        setShowModal(false);
+        setEditingItem(null);
+        setNewLancamento({
+          descricao: "",
+          observacao: "",
+          categoria: "",
+          tipo: "Saida",
+          valor: "",
+          status: "Aberto",
+          data_vencimento: getCurrentDate()
+        });
+      },
+      className: "px-4 py-2 bg-slate-600 hover:bg-slate-700 rounded transition-colors"
+    },
+    "Cancelar"
+  ), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: saveLancamento,
+      className: "px-4 py-2 bg-green-600 hover:bg-green-700 rounded transition-colors"
+    },
+    editingItem ? "Atualizar" : "Salvar"
+  )))))));
+};
+var stdin_default = FinancialControlApp;
+export {
+  stdin_default as default
+};
