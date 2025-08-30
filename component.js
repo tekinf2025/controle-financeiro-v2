@@ -45,16 +45,9 @@ var FinancialControlApp = () => {
     data_vencimento: getCurrentDate()
   });
   const categorias = [
-    "Loja",
-    "Mercado",
-    "Vendas",
-    "Casa",
-    "Estoque",
-    "Pessoal",
-    "Servidor",
-    "Carro",
-    "Pet",
-    "Outros",
+    "Custo Extra",
+    "Custo Fixo",
+    "Receita",
   ];
   const testConnection = async () => {
     try {
