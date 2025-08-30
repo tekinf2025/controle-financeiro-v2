@@ -60,9 +60,16 @@ const FinancialControlApp = () => {
 
   // Lista de categorias para reutilização
   const categorias = [
-    "Custo Extra",
-    "Custo Fixo",
-    "Receita",
+    "Loja",
+    "Mercado",
+    "Vendas",
+    "Casa",
+    "Estoque",
+    "Pessoal",
+    "Servidor",
+    "Carro",
+    "Pet",
+    "Outros",
   ];
 
   // Testar conexão com Supabase
